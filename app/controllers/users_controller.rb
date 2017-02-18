@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by id: params[:id]
     unless @user
+      log_in @user
       flash[:error] = "User not found!"
       redirect_to root_url
     end
